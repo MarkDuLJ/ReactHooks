@@ -1,7 +1,9 @@
 import React from "react";
 import Color from "./Color";
+import { useColor } from "../hooks/ColorProvider";
 
-export default function ColorList({ colors, onRemoveColor, onRateColor }) {
+export default function ColorList() {
+  const { colors, removeColor, rateColor } = useColor();
   if (!colors.length) return <p>there's no data</p>;
   return (
     <div>
@@ -9,8 +11,8 @@ export default function ColorList({ colors, onRemoveColor, onRateColor }) {
         <Color
           key={color.id}
           {...color}
-          onRemove={onRemoveColor}
-          onRate={onRateColor}
+          onRemove={removeColor}
+          onRate={rateColor}
         />
       ))}
     </div>
